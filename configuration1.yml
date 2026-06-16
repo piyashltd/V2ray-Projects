@@ -81,6 +81,7 @@ proxy-groups:
     type: select
     proxies:
       - "Vmess-BDIX"
+      - "Vmess-BDIX2"
       - "WireGuard-SG"
       - "Vless-Standard"
       - "Vless-Reality"
