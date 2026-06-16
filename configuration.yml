@@ -1,5 +1,6 @@
 proxies:
-  - name: "Piyash68629-BDIX"
+
+  - name: "Vmess-BDIX"
     type: vmess
     server: bd1.vpnjantit.com
     port: 10000
@@ -11,12 +12,63 @@ proxies:
       path: /vpnjantit
     udp: true
 
+  - name: "WireGuard-SG"
+    type: wireguard
+    server: sg11.vpnjantit.com
+    port: 1024
+    ip: 192.168.6.143
+    public-key: zwX/REG+u3JYson7ip1/wW4aLbRQz3AsPOPi/xT6Rh4=
+    private-key: mCAEGMjMXqILu9LTKq0t7DFigma6cmPec6sLn8Lvq3s=
+    udp: true
+
+  - name: "Vless-Standard"
+    type: vless
+    server: vless.example.com   
+    port: 443
+    uuid: your-vless-uuid-here  
+    network: ws
+    tls: true
+    udp: true
+    sni: vless.example.com
+    ws-opts:
+      path: /vlesspath
+
+  - name: "Vless-Reality"
+    type: vless
+    server: reality.example.com  
+    port: 443
+    uuid: your-reality-uuid-here # আপনার UUID
+    network: tcp
+    tls: true
+    udp: true
+    flow: xtls-rprx-vision      
+    servername: www.microsoft.com 
+    reality-opts:
+      public-key: "your-public-key"
+      short-id: "your-short-id"
+
+  - name: "Trojan-Server"
+    type: trojan
+    server: trojan.example.com  
+    port: 443
+    password: your-password-here
+    network: tcp
+    sni: trojan.example.com
+    udp: true
+    alpn:
+      - h2
+      - http/1.1
+
 proxy-groups:
-  - name: "BDIX-Group"
+  - name: "All-In-One-Group"
     type: select
     proxies:
-      - "Piyash68629-BDIX"
+      - "Vmess-BDIX"
+      - "WireGuard-SG"
+      - "Vless-Standard"
+      - "Vless-Reality"
+      - "Trojan-Server"
       - DIRECT
 
 rules:
-  - MATCH,BDIX-Group
+  - MATCH,All-In-One-Group
