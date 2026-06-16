@@ -1,5 +1,10 @@
-proxies:
+mixed-port: 7890
+allow-lan: true
+mode: rule
+log-level: info
+ipv6: false
 
+proxies:
   - name: "Vmess-BDIX"
     type: vmess
     server: bd1.vpnjantit.com
@@ -25,7 +30,7 @@ proxies:
     type: vless
     server: vless.example.com   
     port: 443
-    uuid: your-vless-uuid-here  
+    uuid: e9875bb1-3f14-419b-ab0d-b4b6099b2446  
     network: ws
     tls: true
     udp: true
@@ -37,21 +42,21 @@ proxies:
     type: vless
     server: reality.example.com  
     port: 443
-    uuid: your-reality-uuid-here # আপনার UUID
+    uuid: 4f4b23b1-12c3-4d45-9a67-890123456789 
     network: tcp
     tls: true
     udp: true
     flow: xtls-rprx-vision      
     servername: www.microsoft.com 
     reality-opts:
-      public-key: "your-public-key"
-      short-id: "your-short-id"
+      public-key: ZlQ8m2r2v-h5uX4xG8eK1kHjS5fI_tO3oA7yP-vDkG8
+      short-id: 16ed2b88eabc2012
 
   - name: "Trojan-Server"
     type: trojan
     server: trojan.example.com  
     port: 443
-    password: your-password-here
+    password: my-random-password
     network: tcp
     sni: trojan.example.com
     udp: true
