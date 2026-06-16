@@ -17,7 +17,7 @@ proxies:
       path: /vpnjantit
     udp: true
 
-  - name: "Vmess-BDIX"
+  - name: "Vmess-BDIX2"
     type: vmess
     server: bd1.vpnjantit.com
     port: 10000
