@@ -19,9 +19,9 @@ proxies:
 
   - name: "Vmess-BDIX2"
     type: vmess
-    server: bd1.vpnjantit.com
+    server: bd2.vpnjantit.com
     port: 10000
-    uuid: 7768221c-6944-11f1-815e-525401f40bae
+    uuid: 7768221c-6944-11f1-815e-525401f40bbe
     alterId: 0
     cipher: auto
     network: ws
