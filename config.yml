@@ -47,6 +47,20 @@ proxies:
   sni: telegram.org
   tls: true
   servername: telegram.org
+- name: Saudi Arabia 1
+  type: vless
+  server: sau2.vpnjantit.com
+  port: 10002
+  network: ws
+  udp: true
+  uuid: c3fddfc0-6ad6-11f1-9647-00163c5f28ea
+  tls: true
+  ws-opts:
+    path: /vpnjantit
+    headers:
+      Host: telegram.org
+  sni: telegram.org
+  skip-cert-verify: true
 proxy-groups:
 - name: All-In-One-Group
   type: select
@@ -55,6 +69,7 @@ proxy-groups:
   - Bangladesh 2
   - Singapore
   - Singapore 1
+  - Saudi Arabia 1
   - DIRECT
 rules:
 - MATCH,All-In-One-Group
