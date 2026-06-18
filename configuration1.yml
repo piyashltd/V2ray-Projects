@@ -5,7 +5,7 @@ log-level: info
 ipv6: false
 
 proxies:
-  - name: "Vmess-BDIX"
+  - name: "Bangladesh 1"
     type: vmess
     server: bd1.vpnjantit.com
     port: 10000
@@ -17,7 +17,7 @@ proxies:
       path: /vpnjantit
     udp: true
 
-  - name: "Vmess-BDIX2"
+  - name: "Bangladesh 2"
     type: vmess
     server: bd2.vpnjantit.com
     port: 10000
@@ -29,16 +29,19 @@ proxies:
       path: /vpnjantit
     udp: true
 
-  - name: "WireGuard-SG"
-    type: wireguard
-    server: sg11.vpnjantit.com
-    port: 1024
-    ip: 192.168.6.143
-    public-key: zwX/REG+u3JYson7ip1/wW4aLbRQz3AsPOPi/xT6Rh4=
-    private-key: mCAEGMjMXqILu9LTKq0t7DFigma6cmPec6sLn8Lvq3s=
+  - name: "Singapore"
+    type: vmess
+    server: sg3.vpnjantit.com
+    port: 10000
+    uuid: 5f407ac8-6ac9-11f1-a596-d7a5af4e4570
+    alterId: 0
+    cipher: auto
+    network: ws
+    ws-opts:
+      path: /vpnjantit
     udp: true
 
-  - name: "Vless-Standard"
+  - name: "USA"
     type: vless
     server: vless.example.com   
     port: 443
@@ -50,7 +53,7 @@ proxies:
     ws-opts:
       path: /vlesspath
 
-  - name: "Vless-Reality"
+  - name: "UK"
     type: vless
     server: reality.example.com  
     port: 443
@@ -64,7 +67,7 @@ proxies:
       public-key: ZlQ8m2r2v-h5uX4xG8eK1kHjS5fI_tO3oA7yP-vDkG8
       short-id: 16ed2b88eabc2012
 
-  - name: "Trojan-Server"
+  - name: "Canada"
     type: trojan
     server: trojan.example.com  
     port: 443
@@ -80,12 +83,12 @@ proxy-groups:
   - name: "All-In-One-Group"
     type: select
     proxies:
-      - "Vmess-BDIX"
-      - "Vmess-BDIX2"
-      - "WireGuard-SG"
-      - "Vless-Standard"
-      - "Vless-Reality"
-      - "Trojan-Server"
+      - "Bangladesh 1"
+      - "Bangladesh 2"
+      - "Singapore"
+      - "USA"
+      - "UK"
+      - "Canada"
       - DIRECT
 
 rules:
