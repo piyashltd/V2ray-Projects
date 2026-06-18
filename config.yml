@@ -37,19 +37,6 @@ proxies:
   ws-opts:
     path: /vpnjantit
   udp: true
-- name: UK
-  type: vless
-  server: reality.example.com
-  port: 443
-  uuid: 4f4b23b1-12c3-4d45-9a67-890123456789
-  network: tcp
-  tls: true
-  udp: true
-  flow: xtls-rprx-vision
-  servername: www.microsoft.com
-  reality-opts:
-    public-key: ZlQ8m2r2v-h5uX4xG8eK1kHjS5fI_tO3oA7yP-vDkG8
-    short-id: 16ed2b88eabc2012
 proxy-groups:
 - name: All-In-One-Group
   type: select
@@ -57,7 +44,6 @@ proxy-groups:
   - Bangladesh 1
   - Bangladesh 2
   - Singapore
-  - UK
   - DIRECT
 rules:
 - MATCH,All-In-One-Group
