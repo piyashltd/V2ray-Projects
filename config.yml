@@ -88,6 +88,17 @@ proxies:
   udp: true
   password: Piyash686-vpnjantit.com
   tls: true
+- name: Bangladesh 4
+  type: vmess
+  server: bd1.vpnjantit.com
+  port: 10000
+  uuid: 5e9420aa-6b52-11f1-8125-525401f40bae
+  alterId: 0
+  cipher: auto
+  network: ws
+  udp: true
+  ws-opts:
+    path: /vpnjantit
 proxy-groups:
 - name: All-In-One-Group
   type: select
@@ -100,6 +111,7 @@ proxy-groups:
   - United States 1
   - India 1
   - Bangladesh 3
+  - Bangladesh 4
   - DIRECT
 rules:
 - MATCH,All-In-One-Group
