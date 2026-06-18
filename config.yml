@@ -3,93 +3,73 @@ allow-lan: true
 mode: rule
 log-level: info
 ipv6: false
-
 proxies:
-  - name: "Bangladesh 1"
-    type: vmess
-    server: bd1.vpnjantit.com
-    port: 10000
-    uuid: 7768221c-6944-11f1-815e-525401f40bae
-    alterId: 0
-    cipher: auto
-    network: ws
-    ws-opts:
-      path: /vpnjantit
-    udp: true
-
-  - name: "Bangladesh 2"
-    type: vmess
-    server: bd2.vpnjantit.com
-    port: 10000
-    uuid: 7768221c-6944-11f1-815e-525401f40bbe
-    alterId: 0
-    cipher: auto
-    network: ws
-    ws-opts:
-      path: /vpnjantit
-    udp: true
-
-  - name: "Singapore"
-    type: vmess
-    server: sg3.vpnjantit.com
-    port: 10000
-    uuid: 5f407ac8-6ac9-11f1-a596-d7a5af4e4570
-    alterId: 0
-    cipher: auto
-    network: ws
-    ws-opts:
-      path: /vpnjantit
-    udp: true
-
-  - name: "USA"
-    type: vless
-    server: vless.example.com   
-    port: 443
-    uuid: e9875bb1-3f14-419b-ab0d-b4b6099b2446  
-    network: ws
-    tls: true
-    udp: true
-    sni: vless.example.com
-    ws-opts:
-      path: /vlesspath
-
-  - name: "UK"
-    type: vless
-    server: reality.example.com  
-    port: 443
-    uuid: 4f4b23b1-12c3-4d45-9a67-890123456789 
-    network: tcp
-    tls: true
-    udp: true
-    flow: xtls-rprx-vision      
-    servername: www.microsoft.com 
-    reality-opts:
-      public-key: ZlQ8m2r2v-h5uX4xG8eK1kHjS5fI_tO3oA7yP-vDkG8
-      short-id: 16ed2b88eabc2012
-
-  - name: "Canada"
-    type: trojan
-    server: trojan.example.com  
-    port: 443
-    password: my-random-password
-    network: tcp
-    sni: trojan.example.com
-    udp: true
-    alpn:
-      - h2
-      - http/1.1
-
+- name: Bangladesh 1
+  type: vmess
+  server: bd1.vpnjantit.com
+  port: 10000
+  uuid: 7768221c-6944-11f1-815e-525401f40bae
+  alterId: 0
+  cipher: auto
+  network: ws
+  ws-opts:
+    path: /vpnjantit
+  udp: true
+- name: Bangladesh 2
+  type: vmess
+  server: bd2.vpnjantit.com
+  port: 10000
+  uuid: 7768221c-6944-11f1-815e-525401f40bbe
+  alterId: 0
+  cipher: auto
+  network: ws
+  ws-opts:
+    path: /vpnjantit
+  udp: true
+- name: Singapore
+  type: vmess
+  server: sg3.vpnjantit.com
+  port: 10000
+  uuid: 5f407ac8-6ac9-11f1-a596-d7a5af4e4570
+  alterId: 0
+  cipher: auto
+  network: ws
+  ws-opts:
+    path: /vpnjantit
+  udp: true
+- name: UK
+  type: vless
+  server: reality.example.com
+  port: 443
+  uuid: 4f4b23b1-12c3-4d45-9a67-890123456789
+  network: tcp
+  tls: true
+  udp: true
+  flow: xtls-rprx-vision
+  servername: www.microsoft.com
+  reality-opts:
+    public-key: ZlQ8m2r2v-h5uX4xG8eK1kHjS5fI_tO3oA7yP-vDkG8
+    short-id: 16ed2b88eabc2012
+- name: Canada
+  type: trojan
+  server: trojan.example.com
+  port: 443
+  password: my-random-password
+  network: tcp
+  sni: trojan.example.com
+  udp: true
+  alpn:
+  - h2
+  - http/1.1
 proxy-groups:
-  - name: "All-In-One-Group"
-    type: select
-    proxies:
-      - "Bangladesh 1"
-      - "Bangladesh 2"
-      - "Singapore"
-      - "USA"
-      - "UK"
-      - "Canada"
-      - DIRECT
-
+- name: All-In-One-Group
+  type: select
+  proxies:
+  - Bangladesh 1
+  - Bangladesh 2
+  - Singapore
+  - UK
+  - Canada
+  - DIRECT
 rules:
-  - MATCH,All-In-One-Group
+- MATCH,All-In-One-Group
