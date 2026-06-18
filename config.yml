@@ -37,6 +37,16 @@ proxies:
   ws-opts:
     path: /vpnjantit
   udp: true
+- name: Singapore 1
+  type: trojan
+  server: sg11.vpnjantit.com
+  port: 8443
+  network: tcp
+  udp: true
+  password: Piyash686-vpnjantit.com
+  sni: telegram.org
+  tls: true
+  servername: telegram.org
 proxy-groups:
 - name: All-In-One-Group
   type: select
@@ -44,6 +54,7 @@ proxy-groups:
   - Bangladesh 1
   - Bangladesh 2
   - Singapore
+  - Singapore 1
   - DIRECT
 rules:
 - MATCH,All-In-One-Group
