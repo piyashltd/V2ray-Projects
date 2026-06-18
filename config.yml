@@ -50,17 +50,6 @@ proxies:
   reality-opts:
     public-key: ZlQ8m2r2v-h5uX4xG8eK1kHjS5fI_tO3oA7yP-vDkG8
     short-id: 16ed2b88eabc2012
-- name: Canada
-  type: trojan
-  server: trojan.example.com
-  port: 443
-  password: my-random-password
-  network: tcp
-  sni: trojan.example.com
-  udp: true
-  alpn:
-  - h2
-  - http/1.1
 proxy-groups:
 - name: All-In-One-Group
   type: select
@@ -69,7 +58,6 @@ proxy-groups:
   - Bangladesh 2
   - Singapore
   - UK
-  - Canada
   - DIRECT
 rules:
 - MATCH,All-In-One-Group
