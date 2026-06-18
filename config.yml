@@ -61,6 +61,14 @@ proxies:
       Host: telegram.org
   sni: telegram.org
   skip-cert-verify: true
+- name: United States 1
+  type: trojan
+  server: usa9.vpnjantit.com
+  port: 8443
+  network: tcp
+  udp: true
+  password: piyash99-vpnjantit.com
+  tls: true
 proxy-groups:
 - name: All-In-One-Group
   type: select
@@ -70,6 +78,7 @@ proxy-groups:
   - Singapore
   - Singapore 1
   - Saudi Arabia 1
+  - United States 1
   - DIRECT
 rules:
 - MATCH,All-In-One-Group
