@@ -80,6 +80,14 @@ proxies:
   udp: true
   ws-opts:
     path: /vpnjantit
+- name: Bangladesh 3
+  type: trojan
+  server: bd1.vpnjantit.com
+  port: 4443
+  network: tcp
+  udp: true
+  password: Piyash686-vpnjantit.com
+  tls: true
 proxy-groups:
 - name: All-In-One-Group
   type: select
@@ -91,6 +99,7 @@ proxy-groups:
   - Saudi Arabia 1
   - United States 1
   - India 1
+  - Bangladesh 3
   - DIRECT
 rules:
 - MATCH,All-In-One-Group
