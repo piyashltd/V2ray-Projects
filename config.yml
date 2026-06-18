@@ -69,6 +69,17 @@ proxies:
   udp: true
   password: piyash99-vpnjantit.com
   tls: true
+- name: India 1
+  type: vmess
+  server: in2.vpnjantit.com
+  port: 10000
+  uuid: 42f11f9c-6ada-11f1-8da8-d3c8c7083735
+  alterId: 0
+  cipher: auto
+  network: ws
+  udp: true
+  ws-opts:
+    path: /vpnjantit
 proxy-groups:
 - name: All-In-One-Group
   type: select
@@ -79,6 +90,7 @@ proxy-groups:
   - Singapore 1
   - Saudi Arabia 1
   - United States 1
+  - India 1
   - DIRECT
 rules:
 - MATCH,All-In-One-Group
