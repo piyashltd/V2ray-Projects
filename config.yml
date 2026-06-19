@@ -61,7 +61,7 @@ proxies:
   tls: true
   sni: creativecommons.org
   skip-cert-verify: true
-- name: Singapore 3
+- name: Singapore
   type: vmess
   server: sg-1.stunnel.cc
   port: 8443
@@ -84,7 +84,7 @@ proxy-groups:
   - Bangladesh 3
   - Bangladesh 4
   - Singapore 2
-  - Singapore 3
+  - Singapore
   - DIRECT
 rules:
 - MATCH,All-In-One-Group
