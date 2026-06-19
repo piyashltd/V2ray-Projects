@@ -37,22 +37,6 @@ proxies:
   udp: true
   ws-opts:
     path: /vpnjantit
-- name: Singapore 2
-  type: vmess
-  server: sg-1.stunnel.cc
-  port: 8443
-  uuid: 34382039-3920-4937-a035-362035342039
-  alterId: 16
-  cipher: none
-  network: ws
-  udp: true
-  ws-opts:
-    path: /ws
-    headers:
-      Host: sg-1.stunnel.cc
-  tls: true
-  sni: creativecommons.org
-  skip-cert-verify: true
 - name: Singapore
   type: vmess
   server: sg-1.stunnel.cc
@@ -89,7 +73,6 @@ proxy-groups:
   - Saudi Arabia 1
   - United States 1
   - Bangladesh 4
-  - Singapore 2
   - Singapore
   - Singapore 1
   - DIRECT
