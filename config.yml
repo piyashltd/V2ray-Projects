@@ -66,6 +66,17 @@ proxies:
       Host: sg-4.stunnel.cc
   tls: true
   skip-cert-verify: true
+- name: Brazil 1
+  type: vmess
+  server: br1.vpnjantit.com
+  port: 10000
+  uuid: bb4f0b0e-6c4a-11f1-b06c-00163c976cf7
+  alterId: 0
+  cipher: auto
+  network: ws
+  udp: true
+  ws-opts:
+    path: /vpnjantit
 proxy-groups:
 - name: All-In-One-Group
   type: select
@@ -75,6 +86,7 @@ proxy-groups:
   - Bangladesh 4
   - Singapore
   - Singapore 1
+  - Brazil 1
   - DIRECT
 rules:
 - MATCH,All-In-One-Group
