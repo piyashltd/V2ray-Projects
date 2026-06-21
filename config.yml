@@ -77,6 +77,17 @@ proxies:
   udp: true
   ws-opts:
     path: /vpnjantit
+- name: Bangladesh 1
+  type: vmess
+  server: bd1.vpnjantit.com
+  port: 10000
+  uuid: 2226081e-6d22-11f1-9ba5-525401f40bae
+  alterId: 0
+  cipher: auto
+  network: ws
+  udp: true
+  ws-opts:
+    path: /vpnjantit
 proxy-groups:
 - name: All-In-One-Group
   type: select
@@ -87,6 +98,7 @@ proxy-groups:
   - Singapore
   - Singapore 1
   - Brazil 1
+  - Bangladesh 1
   - DIRECT
 rules:
 - MATCH,All-In-One-Group
