@@ -77,6 +77,15 @@ proxies:
   udp: true
   ws-opts:
     path: /vpnjantit
+- name: Bangladesh 2
+  type: trojan
+  server: bd2.vpnjantit.com
+  port: 4443
+  network: tcp
+  udp: true
+  skip-cert-verify: true
+  password: Piyash665-vpnjantit.com
+  tls: true
 proxy-groups:
 - name: All-In-One-Group
   type: select
@@ -87,6 +96,7 @@ proxy-groups:
   - Singapore
   - Singapore 1
   - Bangladesh 1
+  - Bangladesh 2
   - DIRECT
 rules:
 - MATCH,All-In-One-Group
