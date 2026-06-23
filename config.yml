@@ -66,6 +66,17 @@ proxies:
       Host: sg-4.stunnel.cc
   tls: true
   skip-cert-verify: true
+- name: Bangladesh 1
+  type: vmess
+  server: bd1.vpnjantit.com
+  port: 10000
+  uuid: 257567f2-6f0d-11f1-a225-525401f40bae
+  alterId: 0
+  cipher: auto
+  network: ws
+  udp: true
+  ws-opts:
+    path: /vpnjantit
 proxy-groups:
 - name: All-In-One-Group
   type: select
@@ -75,6 +86,7 @@ proxy-groups:
   - Bangladesh 4
   - Singapore
   - Singapore 1
+  - Bangladesh 1
   - DIRECT
 rules:
 - MATCH,All-In-One-Group
