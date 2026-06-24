@@ -4,17 +4,6 @@ mode: rule
 log-level: info
 ipv6: false
 proxies:
-- name: Bangladesh 4
-  type: vmess
-  server: bd1.vpnjantit.com
-  port: 10000
-  uuid: 5e9420aa-6b52-11f1-8125-525401f40bae
-  alterId: 0
-  cipher: auto
-  network: ws
-  udp: true
-  ws-opts:
-    path: /vpnjantit
 - name: Singapore
   type: vmess
   server: sg-1.stunnel.cc
@@ -68,7 +57,6 @@ proxy-groups:
 - name: All-In-One-Group
   type: select
   proxies:
-  - Bangladesh 4
   - Singapore
   - Singapore 1
   - Bangladesh 1
