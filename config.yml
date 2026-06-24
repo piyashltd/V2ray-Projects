@@ -4,14 +4,6 @@ mode: rule
 log-level: info
 ipv6: false
 proxies:
-- name: United States 1
-  type: trojan
-  server: usa9.vpnjantit.com
-  port: 8443
-  network: tcp
-  udp: true
-  password: piyash99-vpnjantit.com
-  tls: true
 - name: Bangladesh 4
   type: vmess
   server: bd1.vpnjantit.com
@@ -76,7 +68,6 @@ proxy-groups:
 - name: All-In-One-Group
   type: select
   proxies:
-  - United States 1
   - Bangladesh 4
   - Singapore
   - Singapore 1
