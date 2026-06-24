@@ -4,20 +4,6 @@ mode: rule
 log-level: info
 ipv6: false
 proxies:
-- name: Saudi Arabia 1
-  type: vless
-  server: sau2.vpnjantit.com
-  port: 10002
-  network: ws
-  udp: true
-  uuid: c3fddfc0-6ad6-11f1-9647-00163c5f28ea
-  tls: true
-  ws-opts:
-    path: /vpnjantit
-    headers:
-      Host: telegram.org
-  sni: telegram.org
-  skip-cert-verify: true
 - name: United States 1
   type: trojan
   server: usa9.vpnjantit.com
@@ -90,7 +76,6 @@ proxy-groups:
 - name: All-In-One-Group
   type: select
   proxies:
-  - Saudi Arabia 1
   - United States 1
   - Bangladesh 4
   - Singapore
