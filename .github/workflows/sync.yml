@@ -1,0 +1,97 @@
+name: Sync Config to Base64
+
+on:
+  push:
+    paths:
+      - 'config.yml' # যখনই config.yml এ পরিবর্তন আসবে, শুধুমাত্র তখনই এটি রান করবে
+  workflow_dispatch: # চাইলে ম্যানুয়ালি রান করার জন্য
+
+jobs:
+  update-config:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # ফাইলে পরিবর্তন সেভ করার পারমিশন
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install PyYAML
+        run: pip install pyyaml
+
+      - name: Generate config.txt
+        run: |
+          cat << 'EOF' > generate.py
+          import yaml, json, base64, urllib.parse
+
+          # Base64 Encode function
+          def b64(s): return base64.b64encode(s.encode('utf-8')).decode('utf-8')
+
+          with open('config.yml', 'r', encoding='utf-8') as f:
+              data = yaml.safe_load(f)
+
+          proxies = data.get('proxies', [])
+          uris = []
+
+          for p in proxies:
+              ptype = p.get('type')
+              name = urllib.parse.quote(p.get('name', 'Proxy'))
+              server = p.get('server', '')
+              port = p.get('port', '')
+              
+              if ptype == 'vmess':
+                  v_obj = {
+                      "v": "2", "ps": p.get('name', ''), "add": server, "port": str(port),
+                      "id": p.get('uuid', ''), "aid": str(p.get('alterId', 0)),
+                      "scy": p.get('cipher', 'auto'), "net": p.get('network', 'tcp'),
+                      "type": "none", "tls": "tls" if p.get('tls') else ""
+                  }
+                  if p.get('sni'): v_obj['sni'] = p.get('sni')
+                  if p.get('network') == 'ws':
+                      opts = p.get('ws-opts', {})
+                      v_obj['path'] = opts.get('path', '/')
+                      if 'headers' in opts and 'Host' in opts['headers']:
+                          v_obj['host'] = opts['headers']['Host']
+                  uris.append("vmess://" + b64(json.dumps(v_obj, separators=(',', ':'))))
+                  
+              elif ptype == 'vless':
+                  uuid = p.get('uuid', '')
+                  params = {"type": p.get('network', 'tcp'), "encryption": "none"}
+                  if p.get('tls'): params["security"] = "tls"
+                  if p.get('sni'): params["sni"] = p.get('sni')
+                  if p.get('network') == 'ws':
+                      opts = p.get('ws-opts', {})
+                      params['path'] = urllib.parse.quote(opts.get('path', '/'), safe='')
+                      if 'headers' in opts and 'Host' in opts['headers']:
+                          params['host'] = urllib.parse.quote(opts['headers']['Host'])
+                  query = "&".join([f"{k}={v}" for k, v in params.items()])
+                  uris.append(f"vless://{uuid}@{server}:{port}?{query}#{name}")
+                  
+              elif ptype == 'trojan':
+                  password = p.get('password', '')
+                  params = {"type": p.get('network', 'tcp')}
+                  if p.get('tls') or p.get('network') == 'tcp': params["security"] = "tls"
+                  if p.get('sni'): params["sni"] = p.get('sni')
+                  query = "&".join([f"{k}={v}" for k, v in params.items()])
+                  uris.append(f"trojan://{password}@{server}:{port}?{query}#{name}")
+
+          # সব প্রক্সি লিঙ্ক সিরিয়ালি যুক্ত করে পুরোটাকে Base64 তে ইনকোড করা (Standard Sub Format)
+          b64_sub = b64("\n".join(uris))
+          
+          with open('config.txt', 'w', encoding='utf-8') as f:
+              f.write(b64_sub)
+          EOF
+          python generate.py
+
+      - name: Commit and Push config.txt
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add config.txt
+          git commit -m "Auto-sync config.txt from config.yml via workflow" || echo "No changes to commit"
+          git push
