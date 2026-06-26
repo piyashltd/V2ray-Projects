@@ -39,6 +39,17 @@ proxies:
   skip-cert-verify: true
   password: Piyash665-vpnjantit.com
   tls: true
+- name: Singapore 3
+  type: vmess
+  server: sg10.vpnjantit.com
+  port: 10000
+  uuid: 151e5b18-7168-11f1-8429-1fae7863314c
+  alterId: 0
+  cipher: auto
+  network: ws
+  udp: true
+  ws-opts:
+    path: /vpnjantit
 proxy-groups:
 - name: All-In-One-Group
   type: select
@@ -46,6 +57,7 @@ proxy-groups:
   - Bangladesh 1
   - Singapore 1
   - Singapore 2
+  - Singapore 3
   - DIRECT
 rules:
 - MATCH,All-In-One-Group
