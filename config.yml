@@ -4,20 +4,6 @@ mode: rule
 log-level: info
 ipv6: false
 proxies:
-- name: Singapore
-  type: vmess
-  server: sg-1.stunnel.cc
-  port: 8443
-  uuid: 34382039-3920-4937-a035-362035342039
-  alterId: 0
-  cipher: auto
-  network: ws
-  udp: true
-  ws-opts:
-    path: /ws
-    headers:
-      Host: sg-1.stunnel.cc
-  tls: true
 - name: Bangladesh 1
   type: vmess
   server: bd1.vpnjantit.com
@@ -48,7 +34,6 @@ proxy-groups:
 - name: All-In-One-Group
   type: select
   proxies:
-  - Singapore
   - Bangladesh 1
   - Singapore 1
   - DIRECT
