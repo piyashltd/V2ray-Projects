@@ -18,21 +18,6 @@ proxies:
     headers:
       Host: sg-1.stunnel.cc
   tls: true
-- name: Singapore 1
-  type: vmess
-  server: sg-4.stunnel.cc
-  port: 8443
-  uuid: 34392031-3031-4031-b032-203130302031
-  alterId: 0
-  cipher: auto
-  network: ws
-  udp: true
-  ws-opts:
-    path: /ws
-    headers:
-      Host: sg-4.stunnel.cc
-  tls: true
-  skip-cert-verify: true
 - name: Bangladesh 1
   type: vmess
   server: bd1.vpnjantit.com
@@ -49,7 +34,6 @@ proxy-groups:
   type: select
   proxies:
   - Singapore
-  - Singapore 1
   - Bangladesh 1
   - DIRECT
 rules:
