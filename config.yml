@@ -29,12 +29,28 @@ proxies:
   udp: true
   ws-opts:
     path: /vpnjantit
+- name: Singapore 1
+  type: vmess
+  server: sg-1.stunnel.cc
+  port: 8443
+  uuid: 35342035-3520-4533-a031-303120353120
+  alterId: 0
+  cipher: auto
+  network: ws
+  udp: true
+  ws-opts:
+    path: /ws
+    headers:
+      Host: sg-1.stunnel.cc
+  tls: true
+  skip-cert-verify: true
 proxy-groups:
 - name: All-In-One-Group
   type: select
   proxies:
   - Singapore
   - Bangladesh 1
+  - Singapore 1
   - DIRECT
 rules:
 - MATCH,All-In-One-Group
