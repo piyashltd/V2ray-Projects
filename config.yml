@@ -4,15 +4,6 @@ mode: rule
 log-level: info
 ipv6: false
 proxies:
-- name: Singapore 2
-  type: trojan
-  server: sg10.vpnjantit.com
-  port: 8443
-  network: tcp
-  udp: true
-  skip-cert-verify: true
-  password: Piyash665-vpnjantit.com
-  tls: true
 - name: Singapore 3
   type: vmess
   server: sg10.vpnjantit.com
@@ -39,7 +30,6 @@ proxy-groups:
 - name: All-In-One-Group
   type: select
   proxies:
-  - Singapore 2
   - Singapore 3
   - Bangladesh 2
   - DIRECT
